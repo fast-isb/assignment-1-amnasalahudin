@@ -1,6 +1,5 @@
-
 import React, {useState} from "react"
-import "./login.css"
+import "./signup.css"
 import axios from "axios";
 import pic from './pic.png'
 
@@ -8,7 +7,7 @@ import pic from './pic.png'
 
 
 
-const Login = () => {
+const Signup = () => {
     return (
        
         <div class="parent clearfix">
@@ -25,15 +24,23 @@ const Login = () => {
     
     <div class="login">
       <div className="container">
-        <h1>Pharmacy Log In</h1>
+     
+        <h1>Pharmacy Register</h1>
         
     
          <div className="login-form">
+
           <form action="">
-            <input type="email" name="email"   placeholder="E-mail Address"></input>
-            <input type="password" name="password" placeholder="Password"></input>
+          <input type="fullname" name="fullname"  placeholder="Full Name"></input>
+            <input type="email" name="email"  placeholder="E-mail Address"></input>
+            <input type="password" name="password"  placeholder="Password"></input>
             
+          
+            <button type="submit" >REGISTER</button>
+            <br></br>
+            <b>OR</b>
             <button type="submit" >LOG IN</button>
+          
             
             
 
@@ -47,4 +54,4 @@ const Login = () => {
 )
     }
 
-export default Login
+export default Signup
