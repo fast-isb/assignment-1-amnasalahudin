@@ -1,39 +1,83 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
 
 
 
 const app = express()
-const port = 3001;
-dotenv.config()
-app.use(bodyParser.json())
+app.use(express.urlencoded())
 app.use(express.json());
 app.use(cors());
 
-mongoose.connection.on('connected',()=>{
-    console.log("Connected to database");
-})
-mongoose.connection.on("disconnected",()=>{
-    console.log("Disconnected from database");
+mongoose.connect("mongodb://localhost:27017/LoginSignUp", 
+{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, () => {
+    console.log("MongoDB is connected")
 })
 
-const connect=async()=>{
-    try{
-        await mongoose.connect(process.env.DB);
-        console.log("connected to mongo")
-    }catch(error){
-        throw error;
-    }
+const userSchema = new mongoose.Schema({
+	
+	name: { type: String, required: true },
+	email: { type: String, required: true },
+	password: { type: String, required: true },
+});
+
+const User = mongoose.model('User', userSchema);
+
+app.post("/login", (req, res)=> {
+    const { email, password} = req.body
+    User.findOne({ email: email}, (err, user) => 
+    {
+        if(user){
+         if(password === user.password ) 
+          {
+            res.send({message: "Sucessfully Logged In", user: user})
+          } 
+          else 
+            {
+                res.send({ message: "Wrong Password"})
+            }
+        } else 
+        {
+            res.send({message: "User does not exist"})
+        }
+    })
+})
+
+app.post("/register", (req, res)=> 
+{
+    const { name, email, password} = req.body
+    User.findOne({email: email}, (err, user) =>
+     {
+        if(user)
+        {
+            res.send({message: "User already exists!"})
+        } 
+        else 
+        {
+            const user = new User({
+                name,
+                email,
+                password
+         })
+        user.save(err => 
+         {
+            if(err) 
+            {
+                res.send(err)
+            } 
+            else 
+            {
+                res.send( { message: "Registered!" })
+             }
+            })
+        }
+    })
     
-};
+}) 
 
-
-app.use(express.urlencoded({ extended: false }));
-
-app.listen(port, () => {
-    connect();
-    console.log(`Example app listening on port ${port}`)
-  });
+app.listen(3001,() => {
+    console.log("Listening at Port 3001");
+})

@@ -3,15 +3,52 @@ import "./signup.css"
 import axios from "axios";
 import pic from './pic.png'
 
-
+import { useHistory } from "react-router-dom"
 
 
 
 const Signup = () => {
+
+  const history = useHistory()
+
+  const [user,setUser] = useState(
+    {
+      name: "",
+      email:"",
+      password:"",
+  })
+
+  const handleChange= e =>
+   {
+    const {name,value } = e.target
+    setUser({
+              ...user,
+               [name]:value
+      })
+  }
+
+  const register = () => 
+  {
+    const { name, email, password} = user
+    if( name && email && password)
+    {
+        axios.post("http://localhost:3001/register", user)
+        .then( res => {
+         alert(res.data.message)
+         history.push("/login")
+        })
+    } 
+    else 
+    {
+        alert("Enter all fields!")
+    }
+    
+}
+
     return (
        
         <div class="parent clearfix">
-    <div class="bg-illustration">
+        <div class="bg-illustration">
       
 
       <div class="burger-btn">
@@ -30,21 +67,21 @@ const Signup = () => {
     
          <div className="login-form">
 
-          <form action="">
-          <input type="fullname" name="fullname"  placeholder="Full Name"></input>
-            <input type="email" name="email"  placeholder="E-mail Address"></input>
-            <input type="password" name="password"  placeholder="Password"></input>
+        
+          <input type="name" name="name" value={user.name}  onChange={ handleChange } placeholder="Full Name"></input>
+            <input type="email" name="email" value={user.email}  onChange={ handleChange } placeholder="E-mail Address"></input>
+            <input type="password" name="password" value={user.password}  onChange={ handleChange } placeholder="Password"></input>
             
           
-            <button type="submit" >REGISTER</button>
+            <button type="submit" onClick={register}>REGISTER</button>
             <br></br>
             <b>OR</b>
-            <button type="submit" >LOG IN</button>
+            <button type="submit" onClick={() => history.push("/login")} >LOG IN</button>
           
             
             
 
-          </form>
+         
         </div>
     
       </div>
@@ -52,6 +89,7 @@ const Signup = () => {
   </div>
     
 )
-    }
+    
+  }
 
 export default Signup

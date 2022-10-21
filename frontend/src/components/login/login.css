@@ -130,11 +130,11 @@
   .login .container .login-form {
     margin-top: 112px;
   }
-  .login .container .login-form form {
+  .login .container .login-form  {
     display: -ms-grid;
     display: grid;
   }
-  .login .container .login-form form input {
+  .login .container .login-form input {
     font-size: 16px;
     font-weight: normal;
     background: rgba(234, 231, 231, 0.722);
@@ -146,7 +146,7 @@
   }
 
   
-  .login .container .login-form form button[type=submit] {
+  .login .container .login-form button[type=submit] {
     background: -webkit-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
     background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
     background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
@@ -165,10 +165,10 @@
     font-weight: bold;
     font-size: 20px;
   }
-  .login .container .login-form form button[type=submit]:hover::after {
+  .login .container .login-form button[type=submit]:hover::after {
     opacity: 1;
   }
-  .login .container .login-form form button[type=submit]::after {
+  .login .container .login-form button[type=submit]::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -274,10 +274,10 @@
     .login .container .login-form {
       margin-top: 80px;
     }
-    .login .container .login-form form input {
+    .login .container .login-form  input {
       height: 45px;
     }
-    .login .container .login-form form button[type=submit] {
+    .login .container .login-form button[type=submit] {
       height: 45px;
       margin-top: 100px;
     }
