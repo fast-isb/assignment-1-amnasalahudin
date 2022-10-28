@@ -9,7 +9,7 @@ app.use(express.urlencoded())
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/LoginSignUp", 
+mongoose.connect("mongodb+srv://amna:qKzt77JVgR4WPoul@cluster0.qmfxccc.mongodb.net/?retryWrites=true&w=majority", 
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -17,6 +17,8 @@ mongoose.connect("mongodb://localhost:27017/LoginSignUp",
     console.log("MongoDB is connected")
 })
 
+
+//user schema
 const userSchema = new mongoose.Schema({
 	
 	name: { type: String, required: true },
@@ -26,6 +28,8 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+
+// product schema
 const productSchema = new mongoose.Schema({
 	
     ProductID: { type: String, required: true },
@@ -39,7 +43,7 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 
-
+//login
 app.post("/login", (req, res)=> {
     const { email, password} = req.body
     User.findOne({ email: email}, (err, user) => 
@@ -60,6 +64,7 @@ app.post("/login", (req, res)=> {
     })
 })
 
+//register
 app.post("/register", (req, res)=> 
 {
     const { name, email, password} = req.body
@@ -92,6 +97,7 @@ app.post("/register", (req, res)=>
     
 }) 
 
+//adding product
 app.post("/createProduct", (req, res)=> 
 {
     const { ProductID, Title, Price,Image,Rating} = req.body
@@ -125,6 +131,24 @@ app.post("/createProduct", (req, res)=>
     })
     
 }) 
+
+app.get("/", (req, res) => {
+    res.send("express is here");
+  });
+  
+
+app.get("/viewProduct", (req, res) => {
+    Product.find()
+      .then((items) => res.json(items))
+      .catch((err) => console.log(err));
+  });
+
+  app.delete("/delete/:id", (req, res) => {
+    console.log(req.params);
+    Product.findByIdAndDelete({ _id: req.params.id })
+      .then((doc) => console.log(doc))
+      .catch((err) => console.log(err));
+  });
 
 app.listen(3001,() => {
     console.log("Listening at Port 3001");
