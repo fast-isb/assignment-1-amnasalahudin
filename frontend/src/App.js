@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Homepage from "./components/homepage/homepage"
 import Login from "./components/login/login"
 import Signup from "./components/signup/signup"
+import AddProduct from "./components/AddProduct/AddProduct"
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
           // for sign up page
       <Route path="/register">
       <Signup />
+      </Route>
+
+      <Route path="/createProduct">
+      <AddProduct />
       </Route>
 
 

@@ -26,6 +26,20 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+const productSchema = new mongoose.Schema({
+	
+    ProductID: { type: String, required: true },
+	Title: { type: String, required: true },
+	Price: { type: Number, required: true },
+	Image: { type: String, required: true },
+    Rating: { type: Number, required: true },
+
+});
+
+const Product = mongoose.model('Product', productSchema);
+
+
+
 app.post("/login", (req, res)=> {
     const { email, password} = req.body
     User.findOne({ email: email}, (err, user) => 
@@ -71,6 +85,40 @@ app.post("/register", (req, res)=>
             else 
             {
                 res.send( { message: "Registered!" })
+             }
+            })
+        }
+    })
+    
+}) 
+
+app.post("/createProduct", (req, res)=> 
+{
+    const { ProductID, Title, Price,Image,Rating} = req.body
+    Product.findOne({ProductID: ProductID}, (err, user1) =>
+     {
+        if(user1)
+        {
+            res.send({message: "Product Alreday Exists!"})
+        } 
+        else 
+        {
+            const user1 = new Product({
+                ProductID,
+                Title,
+                Price,
+                Image,
+                Rating,
+         })
+        user1.save(err => 
+         {
+            if(err) 
+            {
+                res.send(err)
+            } 
+            else 
+            {
+                res.send( { message: "New Product Added!" })
              }
             })
         }
