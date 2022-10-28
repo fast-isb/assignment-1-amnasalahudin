@@ -2,7 +2,7 @@
 import React, {useState} from "react"
 import "./login.css"
 import axios from "axios";
-import pic from './pic.png'
+import pic from './pic.jpg'
 import { useHistory } from "react-router-dom"
 
 const Login = ({ setLoginUser}) => 
@@ -49,7 +49,7 @@ const Login = ({ setLoginUser}) =>
     
     <div class="login">
       <div className="container">
-        <h1>Pharmacy Log In</h1>
+        <h1>Vendor Log In</h1>
         
     
          <div className="login-form">

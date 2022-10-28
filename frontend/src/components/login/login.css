@@ -61,7 +61,7 @@
     position: relative;
     height: 107vh;
     width: 1194px;
-    background: url("./pic.png") no-repeat center center scroll;
+    background: url("./pic.jpg") no-repeat center center scroll;
     background-size:cover;
     float: left;
     -webkit-animation: bgslide 2.3s forwards;

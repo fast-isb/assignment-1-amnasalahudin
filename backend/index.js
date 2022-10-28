@@ -41,7 +41,7 @@ app.post("/login", (req, res)=> {
             }
         } else 
         {
-            res.send({message: "User does not exist"})
+            res.send({message: "Vendor does not exist"})
         }
     })
 })
@@ -53,7 +53,7 @@ app.post("/register", (req, res)=>
      {
         if(user)
         {
-            res.send({message: "User already exists!"})
+            res.send({message: "Vendor already exists!"})
         } 
         else 
         {
