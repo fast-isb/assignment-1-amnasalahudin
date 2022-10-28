@@ -143,9 +143,27 @@ app.get("/viewProduct", (req, res) => {
       .catch((err) => console.log(err));
   });
 
+//deleting product
   app.delete("/delete/:id", (req, res) => {
     console.log(req.params);
     Product.findByIdAndDelete({ _id: req.params.id })
+      .then((doc) => console.log(doc))
+      .catch((err) => console.log(err));
+  });
+
+//updating product
+  app.put("/update/:id", (req, res) => {
+    Product.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        
+        ProductID: req.body.ProductID,
+        Title: req.body.Title,
+        Price: req.body.Price,
+        Image: req.body.Image,
+        Rating: req.body.Rating
+      }
+    )
       .then((doc) => console.log(doc))
       .catch((err) => console.log(err));
   });

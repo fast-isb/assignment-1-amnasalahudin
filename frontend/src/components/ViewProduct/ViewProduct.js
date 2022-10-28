@@ -4,10 +4,13 @@ import axios from "axios";
 import styled from "styled-components";
 import Card1 from "./Card1";
 import img695 from './img695.jpg'
+import cart from './cart.png'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup'
+import Modal from "react-bootstrap/Modal";
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -15,6 +18,20 @@ import ListGroup from 'react-bootstrap/ListGroup'
 const ViewProduct = () => {
 
     const [products, setProducts] = useState([]);
+    const [updatedPost, setUpdatedPost] = useState({
+        id: "",
+        ProductID: "",
+        Title: "",
+        Price:"",
+        Image:"",
+        Rating: "",
+      });
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
   
 
     useEffect(() => {
@@ -47,6 +64,45 @@ const ViewProduct = () => {
     
         window.location.reload();
       };
+
+     
+      const updatePost = (id,ProductID,Title,Price,Image,Rating) => {
+        setUpdatedPost((prev) => {
+          return {
+            ...prev,
+            id: id,
+            ProductID: ProductID,
+            Title: Title,
+            Price: Price,
+            Image:Image,
+            Rating: Rating,
+            
+          };
+        });
+        handleShow();
+      };
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUpdatedPost((prev) => {
+          return {
+            ...prev,
+            [name]: value,
+          };
+        });
+      };
+
+      const saveUpdatedPost = () => {
+        console.log(updatedPost);
+    
+        axios
+          .put(`http://localhost:3001/update/${updatedPost.id}`, updatedPost)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+    
+        handleClose();
+        window.location.reload();
+      };
       
 
     return (
@@ -57,7 +113,71 @@ const ViewProduct = () => {
       
         <br></br>
         <br></br>
-        <h1><b>View Product</b></h1><Main>
+       
+        <h1><b>    Product List</b></h1>
+        
+        
+        <br></br>
+        
+
+        <img src={img695} alt="Logo" />
+        
+        
+        <Main>
+
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form.Control
+            placeholder="ProductID"
+            name="ProductID"
+            value={updatedPost.ProductID ? updatedPost.ProductID : ""}
+            style={{ marginBottom: "1rem" }}
+            onChange={handleChange}
+          />
+        <Form.Control
+            placeholder="Title"
+            name="Title"
+            value={updatedPost.Title ? updatedPost.Title : ""}
+            style={{ marginBottom: "1rem" }}
+            onChange={handleChange}
+          />
+
+        <Form.Control
+            placeholder="Price"
+            name="Price"
+            value={updatedPost.Price? updatedPost.Price : ""}
+            style={{ marginBottom: "1rem" }}
+            onChange={handleChange}
+          />
+           <Form.Control
+            placeholder="Image"
+            name="Image"
+            value={updatedPost.Image? updatedPost.Image : ""}
+            style={{ marginBottom: "1rem" }}
+            onChange={handleChange}
+          />
+
+            <Form.Control
+            placeholder="Rating"
+            name="Rating"
+            value={updatedPost.Rating? updatedPost.Rating : ""}
+            style={{ marginBottom: "1rem" }}
+            onChange={handleChange}
+          />
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={saveUpdatedPost}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
        
         
 
@@ -80,7 +200,9 @@ const ViewProduct = () => {
                 </ListGroup>
                 <Card.Body>
                 <div className="d-grid gap-2" >
-                <Button variant="outline-secondary" size="lg">Update</Button>
+                <Button variant="outline-secondary" size="lg"   onClick={() =>
+                      updatePost(products._id, products.ProductID, products.Title, products.Price,products.Image,products.Rating)
+                    }>Update</Button>
                 <Button variant="dark"size="lg" onClick={() => deletePost(products._id)}>Delete</Button>
                 </div>
                 </Card.Body>
