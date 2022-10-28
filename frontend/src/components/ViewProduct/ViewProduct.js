@@ -15,6 +15,7 @@ import Form from 'react-bootstrap/Form';
 
 
 
+
 const ViewProduct = () => {
 
     const [products, setProducts] = useState([]);
@@ -229,12 +230,12 @@ const Main = styled.div`
   justify-content: center;
   place-items: center;
   
-  grid-auto-rows: 350px;
+  grid-auto-rows: 600px;
   grid-template-columns: repeat(4, 280px);
   grid-gap: 40px;
  
   @media only screen and (min-width: 1024px) and (max-width: 1680px) {
-    margin-top: 200px;
+    margin-top: 100px;
     padding: 10px 0px;
   }
 `;
