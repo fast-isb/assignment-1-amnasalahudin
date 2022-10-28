@@ -12,6 +12,7 @@ const Homepage = ({setLoginUser}) => {
         <div className="homepage">
         <h1>Homepage</h1>
         <button type="submit"  onClick={() => history.push("/createProduct")}>ADD PRODUCT</button>
+        <button type="submit"  onClick={() => history.push("/viewProduct")}>VIEW PRODUCT</button>
         <button type="submit"  onClick={() => setLoginUser({})}>LOG OUT</button>
       
         </div>

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+   
+    
+   
+  }
+  .img1
+  {
+    width: 100px;
+    height: 100 px;
+  }
+
+  
+
+  body {
+    background-color: rgb(28, 53, 61);
+    font-family: Montserrat;
+    overflow-x: hidden;
+  }
+
+  article,
+  aside,
+  details,
+  figure,
+  footer,
+  header,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }

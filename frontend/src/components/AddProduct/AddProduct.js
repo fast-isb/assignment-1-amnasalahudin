@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState,useEffect} from "react"
 import "./AddProduct.css"
 import axios from "axios";
 import pic from './20943855.jpg'
@@ -36,7 +36,7 @@ const AddProduct = () => {
         axios.post("http://localhost:3001/createProduct", user)
         .then( res => {
          alert(res.data.message)
-         history.push("/")
+         history.push("/viewProduct")
         })
     } 
     else 
