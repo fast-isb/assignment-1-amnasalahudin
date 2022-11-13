@@ -2,9 +2,7 @@ import React, {useState,useEffect} from "react"
 import "./ViewProduct.css"
 import axios from "axios";
 import styled from "styled-components";
-import Card1 from "./Card1";
 import img695 from './img695.jpg'
-import cart from './cart.png'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';

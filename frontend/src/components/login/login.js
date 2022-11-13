@@ -2,7 +2,7 @@
 import React, {useState} from "react"
 import "./login.css"
 import axios from "axios";
-import pic from './pic.jpg'
+
 import { useHistory } from "react-router-dom"
 
 const Login = ({ setLoginUser}) => 

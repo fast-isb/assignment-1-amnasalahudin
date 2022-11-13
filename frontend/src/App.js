@@ -6,7 +6,7 @@ import Login from "./components/login/login"
 import Signup from "./components/signup/signup"
 import AddProduct from "./components/AddProduct/AddProduct"
 import ViewProduct from "./components/ViewProduct/ViewProduct"
-import styled from "styled-components";
+
 
 
 function App() {
