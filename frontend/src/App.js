@@ -14,7 +14,7 @@ function App() {
   const [user,setLoginUser] = useState({})
   return (
     <div className="App" data-testid = "comp">
-      <h1>Hello World</h1>
+      
       <Router>
       <Switch>
 

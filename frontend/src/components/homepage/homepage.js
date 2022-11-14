@@ -9,7 +9,7 @@ const Homepage = ({setLoginUser}) => {
 
     return (
         
-        <div class="parent clearfix">
+        <div class="parent clearfix" data-testid = "homepage">
         <div class="bg-illustration">
       
 

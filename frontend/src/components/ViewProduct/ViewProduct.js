@@ -109,7 +109,7 @@ const ViewProduct = () => {
 
 
         <>
-      
+      <div data-testid = "view">
         <br></br>
         <br></br>
        
@@ -209,7 +209,9 @@ const ViewProduct = () => {
            
             ))
             }
-        </Main></>
+            
+        </Main>
+        </div></>
        
    
 

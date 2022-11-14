@@ -47,7 +47,7 @@ const AddProduct = () => {
 
     return (
        
-        <div class="parent clearfix">
+        <div class="parent clearfix" data-testid = "add">
         <div class="bg-illustration1">
       
 

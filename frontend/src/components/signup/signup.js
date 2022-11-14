@@ -47,7 +47,7 @@ const Signup = () => {
 
     return (
        
-        <div class="parent clearfix">
+        <div class="parent clearfix" data-testid = "signup">
         <div class="bg-illustration">
       
 
