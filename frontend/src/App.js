@@ -13,34 +13,33 @@ function App() {
 
   const [user,setLoginUser] = useState({})
   return (
-    <div className="App">
-
+    <div className="App" data-testid = "comp">
+      <h1>Hello World</h1>
       <Router>
       <Switch>
 
-    // if logged in then homepage, otherwise display the login page
+    
       <Route exact path="/">
           {
             user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
           }
       </Route>
 
-          // for log in
+          
       <Route path="/login">
            <Login setLoginUser={setLoginUser}/>
       </Route>
 
-          // for sign up page
+          
       <Route path="/register">
       <Signup />
       </Route>
 
-          // for create product page
+         
       <Route path="/createProduct">
       <AddProduct />
       </Route>
 
-      // for view product page
       <Route path="/viewProduct">
       <ViewProduct />
       </Route>
