@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-
+import * as dotenv from 'dotenv' 
+dotenv.config()
 
 
 const app = express()
@@ -9,7 +10,7 @@ app.use(express.urlencoded())
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://amna:qKzt77JVgR4WPoul@cluster0.qmfxccc.mongodb.net/?retryWrites=true&w=majority", 
+mongoose.connect(process.env.DB, 
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
