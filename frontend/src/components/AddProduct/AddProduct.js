@@ -32,7 +32,7 @@ const AddProduct = () => {
     const { ProductID, Title, Price,Image,Rating} = user
     if( ProductID && Title && Price && Image && Rating)
     {
-        axios.post("http://localhost:3001/createProduct", user)
+        axios.post("http://35.77.96.6:3001/createProduct", user)
         .then( res => {
          alert(res.data.message)
          history.push("/viewProduct")

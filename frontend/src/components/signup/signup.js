@@ -32,7 +32,7 @@ const Signup = () => {
     const { name, email, password} = user
     if( name && email && password)
     {
-        axios.post("http://localhost:3001/register", user)
+        axios.post("http://35.77.96.6:3001/register", user)
         .then( res => {
          alert(res.data.message)
          history.push("/login")

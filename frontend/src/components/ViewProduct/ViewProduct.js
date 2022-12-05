@@ -35,7 +35,7 @@ const ViewProduct = () => {
 
     useEffect(() => {
         axios
-          .get("http://localhost:3001/viewProduct")
+          .get("http://35.77.96.6:3001/viewProduct")
           .then((res) => {
             console.log(res);
             setProducts(res.data);
@@ -57,7 +57,7 @@ const ViewProduct = () => {
         console.log(id);
     
         axios
-          .delete(`http://localhost:3001/delete/${id}`)
+          .delete(`http://35.77.96.6:3001/delete/${id}`)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
     
@@ -95,7 +95,7 @@ const ViewProduct = () => {
         console.log(updatedPost);
     
         axios
-          .put(`http://localhost:3001/update/${updatedPost.id}`, updatedPost)
+          .put(`http://35.77.96.6:3001/update/${updatedPost.id}`, updatedPost)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
     
